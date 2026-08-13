@@ -70,7 +70,7 @@
 - [ ] Every feature retested on the LIVE site (not just local)
 
 ## Phase 7 — Submission Materials
-- [x] All code staged and pushed to GitHub
+- [x] All code pushed to GitHub (final commit pushed to https://github.com/Banujaa13/BlogApp.git)
 - [ ] PDF created with GitHub link + hosted site link
 - [ ] 3-minute demo video recorded, covering:
   - [ ] Registration & login
