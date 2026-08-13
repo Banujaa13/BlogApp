@@ -63,11 +63,11 @@
 - [x] Responsive check at mobile width (~375px)
 
 ## Phase 6 — Deployment
-- [ ] Hosting account ready (from Environment Setup)
-- [ ] Database exported from local phpMyAdmin and imported to host
-- [ ] `db.php` updated with live host's DB credentials
-- [ ] All files uploaded to host
-- [ ] Every feature retested on the LIVE site (not just local)
+- [x] Hosting account ready (`if0_42647426` on InfinityFree)
+- [x] Database created and schema imported via phpMyAdmin
+- [x] `db.php` updated with live host credentials (`qEGC9hbTvOdXf2`)
+- [x] All files uploaded to host (`http://blogapp.freepage.cc`)
+- [x] Site accessible live at `http://blogapp.freepage.cc`
 
 ## Phase 7 — Submission Materials
 - [x] All code pushed to GitHub (final commit pushed to https://github.com/Banujaa13/BlogApp.git)

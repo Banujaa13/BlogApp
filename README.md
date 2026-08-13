@@ -7,7 +7,7 @@ A full-stack, multi-user blog application built with HTML, CSS, JavaScript (fron
 - **Student Index:** 245013X
 - **Course:** IN2120 – Web Programming (2026)
 - **GitHub Repository:** [https://github.com/Banujaa13/BlogApp.git](https://github.com/Banujaa13/BlogApp.git)
-- **Hosted Website URL:** [Add your hosted InfinityFree / 000WebHost URL here]
+- **Hosted Website URL:** [http://blogapp.freepage.cc](http://blogapp.freepage.cc)
 
 ---
 
