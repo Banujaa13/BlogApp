@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "b3e21029-blog-app-in2120",
+		"name": "BlogApp REST API — IN2120",
+		"description": "Postman collection for testing BlogApp PHP REST API endpoints (Authentication & Blog CRUD).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"student1\",\n  \"email\": \"student1@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/register.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"register.php"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"login_id\": \"student1\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/login.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"login.php"
+							]
+						}
+					}
+				},
+				{
+					"name": "Session Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/session_check.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"session_check.php"
+							]
+						}
+					}
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/logout.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"logout.php"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Blog Posts CRUD",
+			"item": [
+				{
+					"name": "Get All Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/posts.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"posts.php"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Single Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/posts.php?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"posts.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Post (Auth Required)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"My First Post from Postman\",\n  \"content\": \"Hello world! This post was created using **Postman**.\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/posts.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"posts.php"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Post (Author Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"_method\": \"PUT\",\n  \"title\": \"Updated Post Title via Postman\",\n  \"content\": \"Updated content body.\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/posts.php?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"posts.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Post (Author Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/BlogApp/backend/api/posts.php?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"BlogApp",
+								"backend",
+								"api",
+								"posts.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
