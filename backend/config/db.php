@@ -14,7 +14,7 @@ if ($isLocal) {
 } else {
     // Live InfinityFree Hosting Environment Settings
     $host = 'sql201.infinityfree.com';
-    $dbname = 'if0_42647426_blogapp';
+    $dbname = 'if0_42647426_blog';
     $username = 'if0_42647426';
     $password = 'qEGC9hbTvOdXf2';
 }
