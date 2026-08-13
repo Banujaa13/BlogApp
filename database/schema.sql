@@ -1,9 +1,6 @@
 -- Database Schema for Blog Application
 -- Course: IN2120 – Web Programming (University of Moratuwa)
 
-CREATE DATABASE IF NOT EXISTS blog_app;
-USE blog_app;
-
 -- Users table
 CREATE TABLE IF NOT EXISTS user (
   id INT AUTO_INCREMENT PRIMARY KEY,
