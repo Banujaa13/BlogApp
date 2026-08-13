@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — BlogApp</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        BlogApp <span class="logo-badge">IN2120</span>
+      </a>
+      <div id="nav-right" class="nav-links">
+        <a href="index.html" class="nav-link">&larr; Back to Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Form Container -->
+  <main class="container">
+    <div class="auth-box">
+      <div class="auth-header">
+        <h2>Welcome Back</h2>
+        <p>Log in to manage your posts and write new articles.</p>
+      </div>
+
+      <div id="alert-box"></div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="login_id">Email or Username</label>
+          <input type="text" id="login_id" name="login_id" class="form-control" placeholder="e.g. banujaa or banujaa@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+          Log In
+        </button>
+      </form>
+
+      <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+        Don't have an account? <a href="register.html">Register here</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('login-form');
+      const alertBox = document.getElementById('alert-box');
+      const submitBtn = document.getElementById('submit-btn');
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alertBox.innerHTML = '';
+        
+        const login_id = document.getElementById('login_id').value.trim();
+        const password = document.getElementById('password').value;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Logging in...';
+
+        try {
+          const response = await fetch('../backend/api/login.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ login_id, password })
+          });
+          const data = await response.json();
+
+          if (data.success) {
+            alertBox.innerHTML = `<div class="alert alert-success">${escapeHTML(data.message)} Redirecting...</div>`;
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 800);
+          } else {
+            alertBox.innerHTML = `<div class="alert alert-danger">${escapeHTML(data.message)}</div>`;
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Log In';
+          }
+        } catch (err) {
+          console.error(err);
+          alertBox.innerHTML = `<div class="alert alert-danger">An unexpected error occurred. Please check server status.</div>`;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Log In';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

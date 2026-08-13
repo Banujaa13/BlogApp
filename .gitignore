@@ -1,0 +1,15 @@
+# Local / Environment overrides
+backend/config/db_live.php
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor files
+.vscode/
+.idea/
+
+# Temp files & logs
+*.log
+scratch/

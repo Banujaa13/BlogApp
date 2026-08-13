@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — BlogApp</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        BlogApp <span class="logo-badge">IN2120</span>
+      </a>
+      <div id="nav-right" class="nav-links">
+        <a href="index.html" class="nav-link">&larr; Back to Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Register Form Container -->
+  <main class="container">
+    <div class="auth-box">
+      <div class="auth-header">
+        <h2>Create an Account</h2>
+        <p>Join BlogApp to start writing and sharing articles.</p>
+      </div>
+
+      <div id="alert-box"></div>
+
+      <form id="register-form">
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <input type="text" id="username" name="username" class="form-control" placeholder="e.g. banujaa" required minlength="3" maxlength="50">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="banujaa@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="At least 6 characters" required minlength="6">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirm_password">Confirm Password</label>
+          <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Re-enter password" required>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+          Create Account
+        </button>
+      </form>
+
+      <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+        Already have an account? <a href="login.html">Log in here</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const registerForm = document.getElementById('register-form');
+      const alertBox = document.getElementById('alert-box');
+      const submitBtn = document.getElementById('submit-btn');
+
+      registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alertBox.innerHTML = '';
+        
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const confirm_password = document.getElementById('confirm_password').value;
+
+        if (password !== confirm_password) {
+          alertBox.innerHTML = `<div class="alert alert-danger">Passwords do not match. Please re-enter.</div>`;
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Registering...';
+
+        try {
+          const response = await fetch('../backend/api/register.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password })
+          });
+          const data = await response.json();
+
+          if (data.success) {
+            alertBox.innerHTML = `<div class="alert alert-success">${escapeHTML(data.message)} Redirecting to login...</div>`;
+            setTimeout(() => {
+              window.location.href = 'login.html';
+            }, 1200);
+          } else {
+            alertBox.innerHTML = `<div class="alert alert-danger">${escapeHTML(data.message)}</div>`;
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Create Account';
+          }
+        } catch (err) {
+          console.error(err);
+          alertBox.innerHTML = `<div class="alert alert-danger">An unexpected error occurred. Please check server status.</div>`;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Create Account';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
