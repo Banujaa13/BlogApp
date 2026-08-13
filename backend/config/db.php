@@ -13,11 +13,10 @@ if ($isLocal) {
     $password = '';
 } else {
     // Live InfinityFree Hosting Environment Settings
-    // NOTE: Update $host with your MySQL Hostname from InfinityFree "MySQL Databases" page
-    $host = 'sql123.infinityfree.com'; // e.g. sql100.infinityfree.com or sql201.infinityfree.com
-    $dbname = 'if0_42647426_blogapp';  // Your live database name
-    $username = 'if0_42647426';        // Your live account username
-    $password = 'qEGC9hbTvOdXf2';      // Your live hosting password
+    $host = 'sql201.infinityfree.com';
+    $dbname = 'if0_42647426_blogapp';
+    $username = 'if0_42647426';
+    $password = 'qEGC9hbTvOdXf2';
 }
 
 $charset = 'utf8mb4';
