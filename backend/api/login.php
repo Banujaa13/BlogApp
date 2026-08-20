@@ -1,5 +1,5 @@
 <?php
-// backend/api/login.php
+// /login.php
 header('Content-Type: application/json');
 require_once __DIR__ . '/../config/db.php';
 
@@ -32,7 +32,7 @@ try {
         exit();
     }
 
-    // Start session
+    // Start 
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
