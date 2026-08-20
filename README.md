@@ -1,8 +1,8 @@
 # Blog Application — IN2120 Web Programming
 
-A full-stack, multi-user blog application built with HTML, CSS, JavaScript (frontend REST client), PHP (backend API), and MySQL (database) for the IN2120 Web Programming take-home assignment, Faculty of Information Technology, University of Moratuwa.
+A full-stack, multi-user blog application built with HTML, CSS, JavaScript (frontend REST client), PHP (backend API), and MySQL (database) for the IN2120 Web Programming take-home assignment
 
-## Student Metadata
+## Student data
 - **Student Name:** Banujaa
 - **Student Index:** 245013X
 - **Course:** IN2120 – Web Programming (2026)
