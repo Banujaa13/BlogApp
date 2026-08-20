@@ -1,18 +1,18 @@
 <?php
 // backend/config/db.php
-// Dual environment database connection (Local XAMPP & InfinityFree Hosting)
+//  environment database connection (Local XAMPP & InfinityFree Hosting)
 
 $serverName = $_SERVER['HTTP_HOST'] ?? 'localhost';
 $isLocal = ($serverName === 'localhost' || strpos($serverName, '127.0.0.1') !== false);
 
 if ($isLocal) {
-    // Local XAMPP Environment Settings
+    // Local XAMPP Environment 
     $host = '127.0.0.1';
     $dbname = 'blog_app';
     $username = 'root';
     $password = '';
 } else {
-    // Live InfinityFree Hosting Environment Settings
+    // Live InfinityFree Hosting Environment 
     $host = 'sql201.infinityfree.com';
     $dbname = 'if0_42647426_blog';
     $username = 'if0_42647426';
