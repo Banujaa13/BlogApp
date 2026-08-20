@@ -128,10 +128,3 @@ BlogApp/
 
 ---
 
-## Submission Checklist
-- [x] Full source code complete and tested locally on XAMPP.
-- [x] GitHub repository connected and code pushed.
-- [ ] Deploy to free web hosting (e.g. InfinityFree / 000WebHost).
-- [ ] Record 3-minute MP4 demonstration video.
-- [ ] Create PDF containing GitHub repository link + working hosted URL.
-- [ ] Zip submission folder named `245013X.zip`.
