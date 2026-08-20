@@ -1,5 +1,5 @@
 -- Database Schema for Blog Application
--- Course: IN2120 – Web Programming (University of Moratuwa)
+
 
 -- Users table
 CREATE TABLE IF NOT EXISTS user (
