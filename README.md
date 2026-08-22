@@ -51,10 +51,11 @@ BlogApp/
 │       ├── auth.js         # Session check & navbar UI state manager
 │       ├── home.js         # Post feed loader & grid renderer
 │       ├── post.js         # Single post fetcher & delete flow
-│       └── editor.js       # Create/Edit form logic & Markdown preview
+│       ├── editor.js       # Create/Edit form logic & Markdown preview
+│       └── ui.js           # Toast alerts & UI helper utilities
 ├── backend/
 │   ├── config/
-│   │   └── db.php          # PDO MySQL database connection
+│   │   └── db.php          # Dual-environment PDO MySQL database connection
 │   ├── includes/
 │   │   └── auth_check.php  # Reusable auth & ownership enforcement functions
 │   └── api/
@@ -66,10 +67,9 @@ BlogApp/
 ├── database/
 │   └── schema.sql          # Database schema script (`user` and `blogPost` tables)
 ├── .gitignore              # Git ignore rules
-├── Blog_Application_PRD.md # Product Requirements Document
+├── BlogApp_Postman_Collection.json # Ready-to-import Postman REST API collection
 ├── IN2120- TakeHomeAssignment.pdf # Assignment specification PDF
-├── README.md               # Project documentation & setup instructions
-└── task.md                 # Assignment progress tracker
+└── README.md               # Project documentation & setup instructions
 ```
 
 ---
