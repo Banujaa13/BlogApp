@@ -41,17 +41,18 @@ function renderNavbarLoggedIn(user) {
     const initial = user.username ? user.username.charAt(0).toUpperCase() : 'U';
 
     navRight.innerHTML = `
+        <a href="index.html" class="nav-link">Home</a>
         <a href="editor.html" class="btn btn-primary btn-sm">
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
-            New Post
+            Write
         </a>
-        <div class="user-pill">
+        <div class="user-pill" title="${escapeHTML(user.username)}">
             <div class="avatar">${initial}</div>
-            <span style="font-weight: 600;">${escapeHTML(user.username)}</span>
+            <span>${escapeHTML(user.username)}</span>
         </div>
-        <button id="logout-btn" class="btn btn-secondary btn-sm">Logout</button>
+        <button id="logout-btn" class="btn btn-ghost btn-sm" type="button">Sign Out</button>
     `;
 
     document.getElementById('logout-btn')?.addEventListener('click', handleLogout);
@@ -65,8 +66,9 @@ function renderNavbarLoggedOut() {
     if (!navRight) return;
 
     navRight.innerHTML = `
-        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
-        <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="login.html" class="btn btn-ghost btn-sm">Sign In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
     `;
 }
 

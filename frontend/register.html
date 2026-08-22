@@ -3,88 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register — BlogApp</title>
+  <title>Create Account — BlogApp</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="logo">
+        <span class="logo-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </span>
         BlogApp
       </a>
-      <div id="nav-right" class="nav-links">
+      <div class="nav-links">
         <a href="index.html" class="nav-link">&larr; Back to Home</a>
       </div>
     </div>
   </nav>
 
-  <!-- Register Form Container -->
-  <main class="container">
+  <main id="main-content" class="container auth-page">
     <div class="auth-box">
       <div class="auth-header">
-        <h2>Create an Account</h2>
-        <p>Join BlogApp to start writing and sharing articles.</p>
+        <div class="auth-icon" aria-hidden="true">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+          </svg>
+        </div>
+        <h2>Create Your Account</h2>
+        <p>Join BlogApp and start publishing your articles today.</p>
       </div>
 
-      <div id="alert-box"></div>
+      <div id="alert-box" role="alert" aria-live="polite"></div>
 
-      <form id="register-form">
+      <form id="register-form" novalidate>
         <div class="form-group">
           <label class="form-label" for="username">Username</label>
-          <input type="text" id="username" name="username" class="form-control" placeholder="e.g. banujaa" required minlength="3" maxlength="50">
+          <input type="text" id="username" name="username" class="form-control"
+            placeholder="Choose a unique username" autocomplete="username" required minlength="3" maxlength="50">
+          <span class="form-hint">3–50 characters. This will be shown on your posts.</span>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="email">Email Address</label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="banujaa@example.com" required>
+          <input type="email" id="email" name="email" class="form-control"
+            placeholder="you@example.com" autocomplete="email" required>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="password">Password</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="At least 6 characters" required minlength="6">
+          <div class="input-group">
+            <input type="password" id="password" name="password" class="form-control"
+              placeholder="At least 6 characters" autocomplete="new-password" required minlength="6">
+            <button type="button" class="input-toggle" data-toggle-password="password" aria-label="Show password">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="confirm_password">Confirm Password</label>
-          <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Re-enter password" required>
+          <div class="input-group">
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control"
+              placeholder="Re-enter your password" autocomplete="new-password" required>
+            <button type="button" class="input-toggle" data-toggle-password="confirm_password" aria-label="Show password">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
-        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+        <button type="submit" id="submit-btn" class="btn btn-primary btn-block" style="margin-top: 0.35rem;">
           Create Account
         </button>
       </form>
 
-      <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
-        Already have an account? <a href="login.html">Log in here</a>
+      <p class="auth-footer">
+        Already have an account? <a href="login.html">Sign in here</a>
       </p>
     </div>
   </main>
 
+  <script src="js/ui.js"></script>
   <script src="js/auth.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const registerForm = document.getElementById('register-form');
       const alertBox = document.getElementById('alert-box');
       const submitBtn = document.getElementById('submit-btn');
+      const passwordInput = document.getElementById('password');
+      const confirmInput = document.getElementById('confirm_password');
+
+      confirmInput.addEventListener('input', () => {
+        confirmInput.classList.toggle('is-invalid', confirmInput.value && confirmInput.value !== passwordInput.value);
+      });
 
       registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         alertBox.innerHTML = '';
-        
+
         const username = document.getElementById('username').value.trim();
         const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
-        const confirm_password = document.getElementById('confirm_password').value;
+        const password = passwordInput.value;
+        const confirm_password = confirmInput.value;
 
         if (password !== confirm_password) {
-          alertBox.innerHTML = `<div class="alert alert-danger">Passwords do not match. Please re-enter.</div>`;
+          confirmInput.classList.add('is-invalid');
+          alertBox.innerHTML = `<div class="alert alert-danger">Passwords do not match. Please check and try again.</div>`;
           return;
         }
 
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Registering...';
+        submitBtn.textContent = 'Creating account...';
 
         try {
           const response = await fetch('../backend/api/register.php', {
@@ -95,10 +133,8 @@
           const data = await response.json();
 
           if (data.success) {
-            alertBox.innerHTML = `<div class="alert alert-success">${escapeHTML(data.message)} Redirecting to login...</div>`;
-            setTimeout(() => {
-              window.location.href = 'login.html';
-            }, 1200);
+            alertBox.innerHTML = `<div class="alert alert-success">${escapeHTML(data.message)} Redirecting to sign in...</div>`;
+            setTimeout(() => { window.location.href = 'login.html'; }, 1200);
           } else {
             alertBox.innerHTML = `<div class="alert alert-danger">${escapeHTML(data.message)}</div>`;
             submitBtn.disabled = false;
@@ -106,7 +142,7 @@
           }
         } catch (err) {
           console.error(err);
-          alertBox.innerHTML = `<div class="alert alert-danger">An unexpected error occurred. Please check server status.</div>`;
+          alertBox.innerHTML = `<div class="alert alert-danger">Unable to connect to the server. Please ensure XAMPP is running.</div>`;
           submitBtn.disabled = false;
           submitBtn.textContent = 'Create Account';
         }

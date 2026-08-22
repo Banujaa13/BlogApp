@@ -3,79 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog Editor — BlogApp</title>
+  <title>Write — BlogApp</title>
   <link rel="stylesheet" href="css/style.css">
-  <!-- Marked.js CDN for live markdown preview -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="logo">
+        <span class="logo-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </span>
         BlogApp
       </a>
-      <div id="nav-right" class="nav-links">
-        <!-- Dynamically populated by auth.js -->
-      </div>
+      <div id="nav-right" class="nav-links"></div>
     </div>
   </nav>
 
-  <!-- Editor Container -->
-  <main class="container">
-    <div class="post-detail" style="max-width: 900px;">
-      
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-        <h1 id="editor-heading" style="font-family: var(--font-heading); font-size: 2rem; color: #fff;">
-          Create New Blog Post
-        </h1>
+  <main id="main-content" class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span id="editor-breadcrumb">New Article</span>
+    </nav>
+
+    <div class="editor-shell post-detail">
+      <div class="editor-header">
+        <div>
+          <h1 id="editor-heading" class="page-title">Create New Article</h1>
+          <p class="page-subtitle">Write in Markdown and preview before publishing.</p>
+        </div>
         <a href="index.html" class="btn btn-secondary btn-sm">Cancel</a>
       </div>
 
-      <div id="alert-box"></div>
+      <div id="alert-box" role="alert" aria-live="polite"></div>
 
       <form id="editor-form">
         <div class="form-group">
-          <label class="form-label" for="title">Blog Title</label>
-          <input type="text" id="title" class="form-control" placeholder="Enter a descriptive title..." required>
+          <label class="form-label" for="title">Title</label>
+          <input type="text" id="title" class="form-control"
+            placeholder="Give your article a clear, descriptive title" required maxlength="255">
         </div>
 
         <div class="form-group">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <label class="form-label" style="margin-bottom: 0;">Content (Markdown Supported)</label>
-            <div class="editor-tabs" style="margin-bottom: 0; padding-bottom: 0; border: none;">
-              <button type="button" id="tab-write" class="tab-btn active">Write</button>
-              <button type="button" id="tab-preview" class="tab-btn">Preview</button>
+          <div class="editor-toolbar">
+            <label class="form-label" style="margin-bottom: 0;">Content</label>
+            <div class="editor-tabs" role="tablist" aria-label="Editor mode">
+              <button type="button" id="tab-write" class="tab-btn active" role="tab" aria-selected="true">Write</button>
+              <button type="button" id="tab-preview" class="tab-btn" role="tab" aria-selected="false">Preview</button>
             </div>
           </div>
 
-          <!-- Write Panel -->
-          <div id="panel-write">
-            <textarea id="content" class="form-control" style="min-height: 320px; font-family: 'Inter', monospace; line-height: 1.6;" placeholder="Write your post content using Markdown syntax (e.g. ## Heading, **bold**, - list)..." required></textarea>
+          <div id="panel-write" role="tabpanel">
+            <textarea id="content" class="form-control" style="min-height: 340px; font-family: ui-monospace, monospace;"
+              placeholder="Start writing your article here...
+
+Use Markdown for formatting:
+## Section heading
+**Bold text** and *italic text*
+- Bullet points
+> Blockquotes" required></textarea>
           </div>
 
-          <!-- Live Preview Panel -->
-          <div id="panel-preview" class="markdown-body" style="display: none; min-height: 320px; padding: 1.25rem; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
-            <p style="color: var(--text-muted);">Nothing to preview yet.</p>
+          <div id="panel-preview" class="preview-panel markdown-body" role="tabpanel">
+            <p style="color: var(--text-muted);">Switch to Preview to see how your article will look.</p>
           </div>
+
+          <div class="editor-meta">
+            <span id="word-count">0 words</span>
+            <span id="char-count">0 characters</span>
+          </div>
+
+          <details class="markdown-help">
+            <summary>Markdown formatting guide</summary>
+            <p style="margin-top: 0.65rem;">
+              <code>## Heading</code> · <code>**bold**</code> · <code>*italic*</code> ·
+              <code>- list item</code> · <code>&gt; quote</code> · <code>`code`</code>
+            </p>
+          </details>
         </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem;">
-          <a href="index.html" class="btn btn-secondary">Cancel</a>
-          <button type="submit" id="submit-btn" class="btn btn-primary">
-            Publish Post
-          </button>
+        <div class="form-actions">
+          <a href="index.html" class="btn btn-secondary">Discard</a>
+          <button type="submit" id="submit-btn" class="btn btn-primary">Publish Article</button>
         </div>
       </form>
-
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 BlogApp </p>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 BlogApp · Submitted by <strong>Banujaa (245013X)</strong></p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+      </div>
     </div>
   </footer>
 

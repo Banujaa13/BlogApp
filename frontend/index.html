@@ -4,51 +4,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
   <title>BlogApp </title>
   <meta name="description"
     content="A multi-user blog application built with PHP, MySQL, HTML, CSS, and JS .">
+=======
+  <title>BlogApp — Share Your Ideas</title>
+  <meta name="description"
+    content="A multi-user blog platform. Read articles, publish your own posts, and manage content securely.">
+>>>>>>> Stashed changes
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="logo">
+        <span class="logo-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </span>
         BlogApp
       </a>
-      <div id="nav-right" class="nav-links">
-        <!-- Dynamically populated by auth.js -->
-      </div>
+      <div id="nav-right" class="nav-links"></div>
     </div>
   </nav>
 
-  <!-- Main Container -->
-  <main class="container">
-
-    <!-- Hero Section -->
+  <main id="main-content" class="container">
     <section class="hero-section">
-      <h1 class="hero-title">Discover Tech & Academic Insights</h1>
+      <h1 class="hero-title">Read, Write &amp; Share Ideas</h1>
       <p class="hero-subtitle">
-        A platform for students and faculty to publish, read, and engage with articles. Built for University of Moratuwa
-        coursework.
+        A clean, secure blogging platform. Discover articles from the community or publish your own in Markdown.
       </p>
+      <div id="hero-actions" class="hero-actions">
+        <a href="#posts-section" class="btn btn-secondary">Browse Articles</a>
+        <a href="register.html" class="btn btn-primary">Get Started Free</a>
+      </div>
+      <div id="home-stats" class="home-stats" aria-live="polite"></div>
     </section>
 
-    <!-- Posts Container Grid -->
-    <div id="posts-container" class="posts-grid">
-      <div class="empty-state" style="grid-column: 1 / -1;">
-        <p>Loading blog posts...</p>
+    <section id="posts-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Latest Articles</h2>
+          <p class="section-desc">Fresh posts from our community of writers</p>
+        </div>
       </div>
-    </div>
-
+      <div id="posts-container" class="posts-grid" aria-live="polite"></div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 BlogApp </p>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 BlogApp · Submitted by <strong>Banujaa (245013X)</strong></p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </div>
     </div>
   </footer>
 
